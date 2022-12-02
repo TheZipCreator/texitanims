@@ -1,0 +1,15 @@
+.dub
+docs.json
+__dummy.html
+docs/
+/cs_video
+cs_video.so
+cs_video.dylib
+cs_video.dll
+cs_video.a
+cs_video.lib
+cs_video-test-*
+*.exe
+*.o
+*.obj
+*.lst

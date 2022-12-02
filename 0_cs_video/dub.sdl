@@ -1,0 +1,8 @@
+name "cs_video"
+description "anim"
+authors "TheZipCreator"
+copyright "Copyright © 2022, TheZipCreator"
+license "GNU General Public License v3.0"
+dependency "arsd-official:vorbis" version="~>10.9.6"
+dependency "arsd-official:simpledisplay" version="~>10.9.6"
+dependency "arsd-official:png" version="~>10.9.6"
