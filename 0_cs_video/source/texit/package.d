@@ -440,11 +440,24 @@ mixin template Texit(string charmap,
     Easing ease;
     Vector origin;
     Vector dest;
+
+    static Vector prevDest; /// The last constructed TranslationEvent's destination
+
     this(float start, float end, Vector origin, Vector dest, Easing e = easing!"easeLinear") {
       super(start, end);
       ease = e;
       this.origin = origin;
       this.dest = dest;
+      prevDest = dest;
+    }
+
+    /// Origin is assumed to be `prevDest`
+    this(float start, float end, Vector dest, Easing e = easing!"easeLinear") {
+      super(start, end);
+      ease = e;
+      this.origin = prevDest;
+      this.dest = dest;
+      prevDest = dest;
     }
 
     override void enable() {
@@ -468,10 +481,24 @@ mixin template Texit(string charmap,
     Easing ease;
     float first;
     float second;
+
+    static float prevSecond; /// Second of the last constructed ZoomEvent
+
+    /// 
     this(float start, float end, float first, float second, Easing e = easing!"easeLinear") {
       super(start, end);
       this.first = first;
       this.second = second;
+      prevSecond = second;
+      ease = e;
+    }
+    
+    /// First is assumed to be prevSecond
+    this(float start, float end, float second, Easing e = easing!"easeLinear") {
+      super(start, end);
+      this.first = prevSecond;
+      this.second = second;
+      prevSecond = second;
       ease = e;
     }
 
