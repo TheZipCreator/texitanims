@@ -52,7 +52,7 @@ string genIPv6() {
 void setup() {
   // keep window in same place
   window.move(100, 100);
-  // offset = 4*60+34;
+  offset = 5*60+5;
   audio("assets/vpns.ogg");
   enum HWW = 1+64*2;
   enum HWH = 36*2;
@@ -207,7 +207,7 @@ void setup() {
   queue(new TextEvent(3*60+46, end, Point(HWW2+10, 3), [1, .4, .4], "* You can still access malicious sites with\n or without a VPN"));
   queue(new TextEvent(3*60+51, end, Point(HWW2+10, 6), [0, 1, 0], "What about other attacks though?"));
   queue(new TextEvent(3*60+52, end, Point(HWW2+10, 7), "* HTTPS is like, really secure"));
-  queue(new TextEvent(3*60+56, end, Point(HWW2+10, 8), "* It would take longer than the expected\n lifetime of the universe to break"));
+  queue(new TextEvent(3*60+56, end, Point(HWW2+10, 8), "* It would take longer than the suspected\n lifetime of the universe to break"));
   queue(new TextEvent(4*60, end, Point(HWW2+9, 14), [.5, .5, .5], "Exact numbers (in years) for the curious:
 Lifetime of the universe:
   14 000 000 000
@@ -233,4 +233,43 @@ enjoy non-stop protection.\""));
   queue(new TextEvent(4*60+37, end, Point(WW-WIDTH+2, WH-HEIGHT+19), [1, 0, .5], "It might encrypt your data a bit but\n it's /already/ encrypted via HTTPS."));
   queue(new TextEvent(4*60+44, end, Point(WW-WIDTH+2, WH-HEIGHT+21), [.5, 0, 1], "VPNs don't prevent companies from using\n tracking cookies, the main way\n companies track you."));
   string browser = readText("assets/browser.txt");
+  queue(new TranslationEvent(4*60+47, 4*60+49, Vector(WW-WIDTH*1.5, WH-HEIGHT/2), easing!"easeOutCubic"));
+  queue(new TextEvent(4*60+47, end, Point(HWW+2, WH-20), [1, 0, 0], browser));
+  queue(new TextEvent(4*60+47.5, end, Point(HWW+3, WH-20+1), "https://www.google.com"));
+  queue(new BoxEvent(4*60+47.5, end, Point(HWW+2+(27/2)-6, WH-20+5), Point(HWW+2+(27/2)+6, WH-20+7), [1, 1, 1]));
+  queue(new TextEvent(4*60+50, end, Point(HWW+5, WH-10), `
+|
+|
+|
++--> [data]
+  `));
+  queue(new TextEvent(4*60+53, end, Point(HWW+30, WH-12), [.5, 1, 1], "These are neccesary for the modern \ninternet."));
+  queue(new TextEvent(4*60+55.5, end, Point(HWW+30, WH-10), [.5, 1, 1], "They're how websites remember that \nyou're logged in."));
+  queue(new TextEvent(5*60+1.5, end, Point(HWW+7, WH-8), [.5, 1, 1], "Typically, websites can only ask for cookies\n that were set on that website."));
+  queue(new TextEvent(5*60+4.8, end, Point(HWW+20, WH-30), [0, 1, 0], browser));
+  queue(new TextEvent(5*60+5, end, Point(HWW+21, WH-29), "https://www.example.com"));
+  queue(new TextEvent(5*60+7, end, Point(HWW+18, WH-26), `
++------>
+|
+|
+|
+|
+|
+|
+|
+|
+`));
+  queue(new BoxEvent(5*60+7, end, Point(HWW+26, WH-26), Point(HWW+30, WH-23), [1, 0, 0]));
+  queue(new TextEvent(5*60+12, end, Point(HWW+2, WH-31), [1, .5, 1], `
+An advertising 
+service could
+place cookies, 
+and then it
+could record 
+every website
+you visited 
+that uses that
+service. 
+`));
+  
 }
