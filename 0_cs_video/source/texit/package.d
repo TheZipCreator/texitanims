@@ -267,21 +267,26 @@ mixin template Texit(string charmap,
   void puts(bool hasEvent)(Event e, int x, int y, float[3] bg, float[3] fg, string text, bool replace) {
     int sx = x;
     foreach(c; text) {
-      if(c == '\n') {
-        y++;
-        x = sx;
-      } else {
-        if(x < 0 || y < 0 || x >= worldWidth || y >= worldHeight)
-          continue;
-        static if(hasEvent) {
-          if(replace || world[x][y].ch == ' ')
-            e.changeTile(Point(x, y), Tile(bg, fg, c));
-        } else {
-          if(replace || world[x][y].ch == ' ')
-            world[x][y] = Tile(bg, fg, c);
-        }
-        x++;
-      }
+			switch(c) {
+				case '\n':
+          y++;
+          x = sx;
+          break;
+        case '\r':
+          break; // grrr windows
+        default:
+          if(x < 0 || y < 0 || x >= worldWidth || y >= worldHeight)
+            continue;
+          static if(hasEvent) {
+            if(replace || world[x][y].ch == ' ')
+              e.changeTile(Point(x, y), Tile(bg, fg, c));
+          } else {
+            if(replace || world[x][y].ch == ' ')
+              world[x][y] = Tile(bg, fg, c);
+          }
+          x++;
+          break;
+			}
     }
   }
 

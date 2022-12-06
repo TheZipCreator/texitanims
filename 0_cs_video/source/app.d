@@ -52,7 +52,7 @@ string genIPv6() {
 void setup() {
   // keep window in same place
   window.move(100, 100);
-  offset = 5*60+5;
+  // offset = 5*60+5;
   audio("assets/vpns.ogg");
   enum HWW = 1+64*2;
   enum HWH = 36*2;
