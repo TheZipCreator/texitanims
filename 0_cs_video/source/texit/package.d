@@ -589,7 +589,8 @@ mixin template Texit(string charmap,
       // glVertex2f(0, 100);
       // glEnd();
       // glDisable(GL_TEXTURE_2D);
-      
+      static if(__traits(compiles, loopGl()))
+        loopGl();
     };
     // init some gl things
     // glGenTextures(1000, textures.ptr);

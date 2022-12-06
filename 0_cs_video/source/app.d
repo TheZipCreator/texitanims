@@ -1,7 +1,7 @@
 import texit;
 import std.string, std.regex, std.file;
 
-mixin Texit!("../qbicfeet_10x10.png", 10, 2, 1+64*4, 36*2, 64, 36, "VPN Video");
+mixin Texit!("../qbicfeet_10x10.png", 10, 2, 1+64*4, 36*4, 64, 36, "VPN Video");
 
 float beat0(float n) {
   return (60f/90f)*n;
@@ -52,7 +52,7 @@ string genIPv6() {
 void setup() {
   // keep window in same place
   window.move(100, 100);
-  // offset = 5*60+5;
+  offset = 5*60+34;
   audio("assets/vpns.ogg");
   enum HWW = 1+64*2;
   enum HWH = 36*2;
@@ -168,11 +168,11 @@ void setup() {
   queue(new TextEvent(2*60+53, end, Point(HWW-36, 43), [1, 0, .5], genIPv4));
   // claims made by VPN companies
   // VPNs add security
-  queue(new BoxEvent(2*60+58, end, Point(HWW, 0), Point(WW-2, WH-1), [0, 0, 0], [0, 1, 1]));
+  queue(new BoxEvent(2*60+58, end, Point(HWW, 0), Point(WW-2, HWH-1), [0, 0, 0], [0, 1, 1]));
   queue(new TextEvent(2*60+58.5, end, Point(HWW, 0), [0, 0, 0], [0, .5, .5], "+"));
   queue(new TextEvent(2*60+58.5, end, Point(WW-2, 0), [0, 0, 0], [0, .5, .5], "+"));
-  queue(new TextEvent(2*60+58.5, end, Point(HWW, WH-1), [0, 0, 0], [0, .5, .5], "+"));
-  queue(new TextEvent(2*60+58.5, end, Point(WW-2, WH-1), [0, 0, 0], [0, .5, .5], "+"));
+  queue(new TextEvent(2*60+58.5, end, Point(HWW, HWH-1), [0, 0, 0], [0, .5, .5], "+"));
+  queue(new TextEvent(2*60+58.5, end, Point(WW-2, HWH-1), [0, 0, 0], [0, .5, .5], "+"));
   queue(new TranslationEvent(2*60+58, 3*60, Vector(HWW-WIDTH/4, HWH/2), Vector(HWW+WIDTH/4, HEIGHT/4), easing!"easeOutQuad"));
   queue(new ZoomEvent(2*60+58, 3*60, 1.5, 1, easing!"easeOutQuad"));
   queue(new TextEvent(2*60+58, end, Point(HWW+2, 2), "Some of these companies also\nclaim to encypt your data, too"));
@@ -216,39 +216,39 @@ Amount of time to break HTTPS:
     364 396 526 882 843 832 205 774 359 265
   "));
   // VPNs add privacy
-  queue(new TranslationEvent(60*4+3, 60*4+6, Vector(HWW2+WIDTH/2, HEIGHT/3), Vector(WW-WIDTH/2, WH-HEIGHT/2), easing!"easeOutCubic"));
+  queue(new TranslationEvent(60*4+3, 60*4+6, Vector(HWW2+WIDTH/2, HEIGHT/3), Vector(WW-WIDTH/2, HWH-HEIGHT/2), easing!"easeOutCubic"));
   queue(new ZoomEvent(60*4+3, 60*4+6, 1.5, 2, easing!"easeOutCubic"));
-  queue(new TextEvent(60*4+3, end, Point(WW-WIDTH+2, WH-HEIGHT+2), [0, .4, 1], "VPN providers also claim that using\nVPNs are more private than not."));
-  queue(new TextEvent(4*60+8, end, Point(WW-WIDTH+2, WH-HEIGHT+4), [0, .5, 0], "Turns out this isn't true either."));
-  queue(new TextEvent(4*60+11.5, end, Point(WW-WIDTH+2, WH-HEIGHT+14), "- NordVPN"));
-  queue(new TextEvent(4*60+15, end, Point(WW-WIDTH+2, WH-HEIGHT+5), [0, .6, .6], "
+  queue(new TextEvent(60*4+3, end, Point(WW-WIDTH+2, HWH-HEIGHT+2), [0, .4, 1], "VPN providers also claim that using\nVPNs are more private than not."));
+  queue(new TextEvent(4*60+8, end, Point(WW-WIDTH+2, HWH-HEIGHT+4), [0, .5, 0], "Turns out this isn't true either."));
+  queue(new TextEvent(4*60+11.5, end, Point(WW-WIDTH+2, HWH-HEIGHT+14), "- NordVPN"));
+  queue(new TextEvent(4*60+15, end, Point(WW-WIDTH+2, HWH-HEIGHT+5), [0, .6, .6], "
 \"Government agencies, marketers, internet service providers 
 would all love to track and collect your browsing history, 
 messages, and other private data. Best way to hide it? Using
 a VPN to encrypt your traffic, hide your IP, and cover your 
 tracks online. Use it at home, at work, and on the go to 
 enjoy non-stop protection.\""));
-  queue(new TextEvent(4*60+30, end, Point(WW-WIDTH+2, WH-HEIGHT+16), [1, 0, 0], "Turns out, this isn't true either!"));
-  queue(new TextEvent(4*60+34.5, end, Point(WW-WIDTH+2, WH-HEIGHT+18), [1, 0, .5], "Pretty much *all* a VPN does is change your IP."));
-  queue(new TextEvent(4*60+37, end, Point(WW-WIDTH+2, WH-HEIGHT+19), [1, 0, .5], "It might encrypt your data a bit but\n it's /already/ encrypted via HTTPS."));
-  queue(new TextEvent(4*60+44, end, Point(WW-WIDTH+2, WH-HEIGHT+21), [.5, 0, 1], "VPNs don't prevent companies from using\n tracking cookies, the main way\n companies track you."));
+  queue(new TextEvent(4*60+30, end, Point(WW-WIDTH+2, HWH-HEIGHT+16), [1, 0, 0], "Turns out, this isn't true either!"));
+  queue(new TextEvent(4*60+34.5, end, Point(WW-WIDTH+2, HWH-HEIGHT+18), [1, 0, .5], "Pretty much *all* a VPN does is change your IP."));
+  queue(new TextEvent(4*60+37, end, Point(WW-WIDTH+2, HWH-HEIGHT+19), [1, 0, .5], "It might encrypt your data a bit but\n it's /already/ encrypted via HTTPS."));
+  queue(new TextEvent(4*60+44, end, Point(WW-WIDTH+2, HWH-HEIGHT+21), [.5, 0, 1], "VPNs don't prevent companies from using\n tracking cookies, the main way\n companies track you."));
   string browser = readText("assets/browser.txt");
-  queue(new TranslationEvent(4*60+47, 4*60+49, Vector(WW-WIDTH*1.5, WH-HEIGHT/2), easing!"easeOutCubic"));
-  queue(new TextEvent(4*60+47, end, Point(HWW+2, WH-20), [1, 0, 0], browser));
-  queue(new TextEvent(4*60+47.5, end, Point(HWW+3, WH-20+1), "https://www.google.com"));
-  queue(new BoxEvent(4*60+47.5, end, Point(HWW+2+(27/2)-6, WH-20+5), Point(HWW+2+(27/2)+6, WH-20+7), [1, 1, 1]));
-  queue(new TextEvent(4*60+50, end, Point(HWW+5, WH-10), `
+  queue(new TranslationEvent(4*60+47, 4*60+49, Vector(WW-WIDTH*1.5, HWH-HEIGHT/2), easing!"easeOutCubic"));
+  queue(new TextEvent(4*60+47, end, Point(HWW+2, HWH-20), [1, 0, 0], browser));
+  queue(new TextEvent(4*60+47.5, end, Point(HWW+3, HWH-20+1), "https://www.google.com"));
+  queue(new BoxEvent(4*60+47.5, end, Point(HWW+2+(27/2)-6, HWH-20+5), Point(HWW+2+(27/2)+6, HWH-20+7), [1, 1, 1]));
+  queue(new TextEvent(4*60+50, end, Point(HWW+5, HWH-10), `
 |
 |
 |
 +--> [data]
   `));
-  queue(new TextEvent(4*60+53, end, Point(HWW+30, WH-12), [.5, 1, 1], "These are neccesary for the modern \ninternet."));
-  queue(new TextEvent(4*60+55.5, end, Point(HWW+30, WH-10), [.5, 1, 1], "They're how websites remember that \nyou're logged in."));
-  queue(new TextEvent(5*60+1.5, end, Point(HWW+7, WH-8), [.5, 1, 1], "Typically, websites can only ask for cookies\n that were set on that website."));
-  queue(new TextEvent(5*60+4.8, end, Point(HWW+20, WH-30), [0, 1, 0], browser));
-  queue(new TextEvent(5*60+5, end, Point(HWW+21, WH-29), "https://www.example.com"));
-  queue(new TextEvent(5*60+7, end, Point(HWW+18, WH-26), `
+  queue(new TextEvent(4*60+53, end, Point(HWW+30, HWH-12), [.5, 1, 1], "These are neccesary for the modern \ninternet."));
+  queue(new TextEvent(4*60+55.5, end, Point(HWW+30, HWH-10), [.5, 1, 1], "They're how websites remember that \nyou're logged in."));
+  queue(new TextEvent(5*60+1.5, end, Point(HWW+7, HWH-8), [.5, 1, 1], "Typically, websites can only ask for cookies\n that were set on that website."));
+  queue(new TextEvent(5*60+4.8, end, Point(HWW+20, HWH-30), [0, 1, 0], browser));
+  queue(new TextEvent(5*60+5, end, Point(HWW+21, HWH-29), "https://www.example.com"));
+  queue(new TextEvent(5*60+7, end, Point(HWW+18, HWH-26), `
 +------>
 |
 |
@@ -259,8 +259,8 @@ enjoy non-stop protection.\""));
 |
 |
 `));
-  queue(new BoxEvent(5*60+7, end, Point(HWW+26, WH-26), Point(HWW+30, WH-23), [1, 0, 0]));
-  queue(new TextEvent(5*60+12, end, Point(HWW+2, WH-31), [1, .5, 1], `
+  queue(new BoxEvent(5*60+7, end, Point(HWW+26, HWH-26), Point(HWW+30, HWH-23), [1, 0, 0]));
+  queue(new TextEvent(5*60+12, end, Point(HWW+2, HWH-31), [1, .5, 1], `
 An advertising 
 service could
 place cookies, 
@@ -271,5 +271,34 @@ you visited
 that uses that
 service. 
 `));
-  
+  queue(new TextEvent(5*60+20, end, Point(HWW+48, HWH-31), [.5, 1, .5], `
+These services
+can still track
+you, whether you
+have a VPN or
+not. 
+`));
+  queue(new BoxEvent(5*60+27, end, Point(0, HWH+1), Point(HWW-2, WH-1), [0, 0, 0], [0, 1, 0]));
+  queue(new TranslationEvent(5*60+26.5, 5*60+30, Vector(HWW-1-WIDTH/2, HWH+1+HEIGHT/2), easing!"easeOutCubic"));
+  queue(new TextEvent(5*60+28, end, Point(HWW-WIDTH, HWH+2), [.5, 0, 1], "The only real way VPNs add privacy is that they hide\n websites you're using to your ISP."));
+  queue(new TextEvent(5*60+33.5, end, Point(HWW-WIDTH, HWH+4), [1, 0, 1], "However, even this isn't really that significant."));
+  queue(new TextEvent(5*60+35.5, end, Point(HWW-50, HWH+12), [1, 0, 0], "https://"));
+  queue(new TextEvent(5*60+35.5, end, Point(HWW-50+8, HWH+12), [0, 1, 0], "www.youtube.com"));
+  queue(new TextEvent(5*60+35.5, end, Point(HWW-50+23, HWH+12), [0, 0, 1], "/watch?v=DdQw4w9WgXc"));
+  queue(new TextEvent(5*60+37, 5*60+43.5, Point(HWW-50, HWH+12), `
+|                     |
++---------------------+
+      This bit  
+`));
+    queue(new TextEvent(5*60+41, 5*60+43.5, Point(HWW-50+23, HWH+8), `
+They can't see this
++------------------+
+|                  |
+`));
+  queue(new TextEvent(5*60+44, end, Point(HWW-50, HWH+8), `
+    (With a VPN) They can't see this
++-----------------------------------------+
+|                                         |
+`));
+  // queue(new TextEvent())
 }
