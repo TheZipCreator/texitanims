@@ -52,7 +52,7 @@ string genIPv6() {
 void setup() {
   // keep window in same place
   window.move(100, 100);
-  offset = 5*60+34;
+  offset = off;
   audio("assets/vpns.ogg");
   enum HWW = 1+64*2;
   enum HWH = 36*2;
@@ -278,7 +278,11 @@ you, whether you
 have a VPN or
 not. 
 `));
-  queue(new BoxEvent(5*60+27, end, Point(0, HWH+1), Point(HWW-2, WH-1), [0, 0, 0], [0, 1, 0]));
+  queue(new BoxEvent(5*60+24, end, Point(0, HWH+1), Point(HWW-2, WH-1), [0, 0, 0], [0, 1, 0]));
+  queue(new TextEvent(5*60+24.5, end, Point(0, HWH+1), [0, 0, 0], [0, .5, 0], "+"));
+  queue(new TextEvent(5*60+24.5, end, Point(0, WH-1), [0, 0, 0], [0, .5, 0], "+"));
+  queue(new TextEvent(5*60+24.5, end, Point(HWW-2, HWH+1), [0, 0, 0], [0, .5, 0], "+"));
+  queue(new TextEvent(5*60+24.5, end, Point(0, WH-1), [0, 0, 0], [0, .5, 0], "+"));
   queue(new TranslationEvent(5*60+26.5, 5*60+30, Vector(HWW-1-WIDTH/2, HWH+1+HEIGHT/2), easing!"easeOutCubic"));
   queue(new TextEvent(5*60+28, end, Point(HWW-WIDTH, HWH+2), [.5, 0, 1], "The only real way VPNs add privacy is that they hide\n websites you're using to your ISP."));
   queue(new TextEvent(5*60+33.5, end, Point(HWW-WIDTH, HWH+4), [1, 0, 1], "However, even this isn't really that significant."));
@@ -300,5 +304,30 @@ They can't see this
 +-----------------------------------------+
 |                                         |
 `));
-  // queue(new TextEvent())
+  queue(new TextEvent(5*60+47, end, Point(HWW-50, HWH+18), [1, 0, 1], "But there's a problem:"));
+  queue(new TextEvent(5*60+48, end, Point(HWW-50, HWH+19), [1, .5, 1], "While a lot of VPNs *promise* to not record\n your traffic, there's really nothing stopping\n them from doing so."));
+  queue(new TranslationEvent(5*60+53, 5*60+54, Vector(HWW-1-WIDTH/2, HWH+1+HEIGHT), easing!"easeOutQuad"));
+  queue(new ZoomEvent(5*60+53, 5*60+54, 1.5, easing!"easeOutQuad"));
+  queue(new TextEvent(5*60+53, end, Point(HWW-54, HWH+25), [.8, 1, 1], "- You're effectively just moving trust from"));
+  queue(new TextEvent(5*60+54.5, end, Point(HWW-28, HWH+30), "one institution"));
+  queue(new TextEvent(5*60+55.25, end, Point(HWW-55, HWH+30), [1, 0, 0], "Internet Service provider"));
+  queue(new TextEvent(5*60+56.5, end, Point(HWW-28, HWH+35), "to another"));
+  queue(new TextEvent(5*60+56.5, end, Point(HWW-53, HWH+30), [.5, .5, 0], `
+|
+|
+|
+V
+`));
+  queue(new TextEvent(5*60+57, end, Point(HWW-55, HWH+35), [1, 1, 0], "VPN Provider"));
+  queue(new TextEvent(5*60+58, end, Point(HWW-54, HWH+37), [.8, 1, 1], "- VPNs, like any other service, can be\n hacked."));
+  queue(new TextEvent(6*60+1, end, Point(HWW-54, HWH+39), [.8, 1, 1],  "- This could have potentially\n disastorous results for your privacy."));
+  queue(new TranslationEvent(6*60+5.5, 6*60+7, Vector(HWW-1-WIDTH/2, HWH+55), easing!"easeOutCubic"));
+  queue(new TextEvent(6*60+5.5, end, Point(HWW-54, HWH+43), [1, 0, 0],"Free VPNs are especially bad with privacy."));
+  queue(new TextEvent(6*60+8, end, Point(HWW-54, HWH+45), [1, .5, .5], "VPNs need some money to stay afloat, and with\n free VPNs that money comes from selling your\n internet traffic to the highest bidder"));
+  queue(new TextEvent(6*60+13, end, Point(HWW-54, HWH+49), [.5, 1, .5], "That doesn't sound very private!"));
+  queue(new ZoomEvent(6*60+14, 6*60+16, 2, easing!"easeOutBack"));
+  queue(new TranslationEvent(6*60+14, 6*60+16, Vector(WIDTH/2, HWH+54), easing!"easeOutCubic"));
+  queue(new TextEvent(6*60+15, end, Point(2, WH-4), [1, 0, .5], "However, even paid VPNs don't solve the aformentioned problem\n of trust."));
 }
+
+float off = 6*60+10;
