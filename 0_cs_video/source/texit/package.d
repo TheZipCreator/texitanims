@@ -238,7 +238,9 @@ mixin template Texit(string charmap,
     /// Undoes all changed tiles
     void undoChanges() {
       foreach(p; changedTiles)
-        world[p.pos.x][p.pos.y] = p.prev;
+        world[p.pos.x][p.pos.y] = Tile([0, 0, 0], [0, 0, 0], ' ');
+      // foreach(p; changedTiles)
+      //   world[p.pos.x][p.pos.y] = p.prev;
     }
   }
 
