@@ -1,5 +1,5 @@
 import texit;
-import std.string, std.regex, std.file;
+import std.string, std.regex, std.file, std.random, std.conv;
 
 mixin Texit!("../qbicfeet_10x10.png", 10, 2, 1+64*4, 36*4, 64, 36, "VPN Video");
 
@@ -15,7 +15,6 @@ string repeat(string s, int n) {
 }
 
 string genIPv4() {
-  import std.random, std.conv;
   string ret = "";
   for(int i = 0; i < 4; i++) {
     if(i != 0)
@@ -26,7 +25,6 @@ string genIPv4() {
 }
 
 string genLocalIPv4() {
-  import std.random, std.conv;
   string ret = "192.168.";
   for(int i = 0; i < 2; i++) {
     if(i != 0)
@@ -37,7 +35,6 @@ string genLocalIPv4() {
 }
 
 string genIPv6() {
-  import std.random;
   enum string chars = "0123456789ABCDEF";
   string ret = "";
   for(int i = 0; i < 8; i++) {
@@ -328,6 +325,37 @@ V
   queue(new ZoomEvent(6*60+14, 6*60+16, 2, easing!"easeOutBack"));
   queue(new TranslationEvent(6*60+14, 6*60+16, Vector(WIDTH/2, HWH+54), easing!"easeOutCubic"));
   queue(new TextEvent(6*60+15, end, Point(2, WH-4), [1, 0, .5], "However, even paid VPNs don't solve the aformentioned problem\n of trust."));
+  queue(new TextEvent(6*60+20, end, Point(10, WH-20), [0, 1, 0], " ----> $$$$$$"));
+  queue(new BoxEvent(6*60+21, end, Point(2, WH-25), Point(8, WH-15), [1, 0, 0]));
+  for(int i = 0; i < 9; i++) {
+    string s = "";
+    for(int j = 0; j < 5; j++)
+      s ~= cast(char)'A'+uniform(0, 26);
+    queue(new TextEvent(6*60+21, end, Point(3, WH-24+i), s));
+  }
+  string govt = readText("assets/government.txt");
+  queue(new TextEvent(6*60+23, end, Point(20, WH-34), [1, 1, 0], govt));
+  queue(new TextEvent(6*60+23.5, end, Point(7, WH-30), `
++-------------
+|
+|
+|
+V
+`));
+  queue(new TextEvent(6*60+25, end, Point(2, WH-6), [0, 1, 1], "So while VPNs could provide a /little/ more privacy, it might not\n be worth the risks."));
+  queue(new TranslationEvent(6*60+29, 6*60+32, Vector(WIDTH/2, HWH+1+HEIGHT/2), easing!"easeOutCubic"));
+  queue(new TextEvent(6*60+25, end, Point(2, HWH+3), [0, 1, 1], "Another use VPN companies advertise is to change your location to be\n able to access resources that may be banned in your current\n country, or to circumvent firewalls set up by authoritarian \n governments."));
+  queue(new TextEvent(6*60+38, end, Point(2, HWH+7), [0, 1, 0], "This is really the only thing VPN companies advertise that is actually\n what they say it is."));
+  queue(new TextEvent(6*60+43, end, Point(2, HWH+10), "However, you don't really need to pay for something like this."));
+  queue(new TextEvent(6*60+45, end, Point(2, HWH+13), "Tor allows you to do it by free by changing a config file."));
+  enum H2 = (HWH+WH-1)/2;
+  queue(new TranslationEvent(6*60+49, 6*60+51, Vector(54, H2), easing!"easeOutCubic"));
+  queue(new ZoomEvent(6*60+49, 6*60+51, 1.25, easing!"easeOutBack"));
+  queue(new TextEvent(6*60+49, end, Point(35, H2-10), [0, 0, 1], "In conclusion, VPNs are generally not\n needed for a majority of people."));
+  queue(new TextEvent(6*60+53, end, Point(35, H2-7), [0, 1, 0],  "On top of that, the main things that\n they claim they provide (security and \n privacy) aren't really that much\n stronger with a VPN than without."));
+  queue(new TextEvent(6*60+59, end, Point(35, H2-2), [0, 1, 1],  "There are much better and cheaper\n ways of protecting your privacy online,\n and while VPNs add some small amount\n of security, they are one of the least\n important layers over all."));
+  queue(new TextEvent(7*60+6.5, end, Point(35, H2+4), [1, 0, 0], "They don't add much security to your\n data, and they don't keep you\n anonymous. And, if you want to access\n a website from a different location,\n you can always just use Tor."));
+  queue(new TextEvent(7*60+14, end, Point(35, H2+9),             "VPNs just really aren't a worthwile\n thing to have."));
 }
 
-float off = 6*60+10;
+float off = 7*60+6;
