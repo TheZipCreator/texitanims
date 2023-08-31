@@ -377,5 +377,5 @@ uqAx - like me
 	queue(new TextEvent(7*60+36.5, 7*60+36.9, Point(WC-160, 18), [.7, .7, .7], "(wow I'm so edgy and cool I said\nthe opposite thing most youtubers \nsay)"));
 }
 
-float off = 5*60+45;
-// float off = 0;
+// float off = 5*60+45;
+float off = 0;
