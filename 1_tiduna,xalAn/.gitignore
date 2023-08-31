@@ -1,0 +1,16 @@
+.dub
+docs.json
+__dummy.html
+docs/
+/tiduna-xalan
+tiduna-xalan.so
+tiduna-xalan.dylib
+tiduna-xalan.dll
+tiduna-xalan.a
+tiduna-xalan.lib
+tiduna-xalan-test-*
+*.exe
+*.pdb
+*.o
+*.obj
+*.lst

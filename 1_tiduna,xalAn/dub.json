@@ -1,0 +1,15 @@
+{
+	"authors": [
+		"TheZipCreator"
+	],
+	"copyright": "Copyright © 2023, TheZipCreator",
+	"dependencies": {
+		"texit": "~>1.2.0"
+	},
+	"description": "Animation for the video about tiduna,xalAn",
+	"libs": [
+		"asound"
+	],
+	"license": "GNU GPLv3",
+	"name": "tiduna-xalan"
+}
