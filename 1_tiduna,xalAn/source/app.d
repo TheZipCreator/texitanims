@@ -29,7 +29,6 @@ void setup() {
 	enum WC = WW/2;
 	offset = off;
 	audio("./tiduna,xalAn.ogg");
-	window.move(1200, 100);
 	translation = Vector(WC, WH);
 	zoom = 4;
 	float end = float.infinity;

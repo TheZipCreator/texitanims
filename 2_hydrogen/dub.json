@@ -4,9 +4,9 @@
 	],
 	"copyright": "Copyright © 2023, TheZipCreator",
 	"dependencies": {
-		"texit": "~>1.3.0"
+		"texit": "~>1.3.1"
 	},
-	"description": "Animation for the video about tiduna,xalAn",
+	"description": "A minimal D application.",
 	"license": "GNU GPLv3",
-	"name": "tiduna-xalan"
+	"name": "2_hydrogen"
 }

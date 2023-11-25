@@ -69,7 +69,6 @@ void queuec(Event e) {
 
 void setup() {
   // keep window in same place
-  window.move(100, 100);
   offset = off;
   audio("assets/vpns.ogg");
   enum HWW = 1+64*2;
